@@ -1,18 +1,34 @@
 import { useState } from "react";
-import Alert from "./Alert";
 import Button from "./Button";
 
 export default function App() {
-  const [alertVisible, setAlertVisibility] = useState(false);
+  const [customer, setCustomer] = useState({
+    name: "John",
+    address: {
+      city: "San Francisco",
+      zipCode: "94110",
+    },
+  });
+
+  const handleSetCustomer = () => {
+    setCustomer({
+      ...customer,
+      address: {
+        ...customer.address,
+        zipCode: "94112",
+      },
+    });
+  };
 
   return (
     <div className="p-4">
-      {alertVisible && (
-        <Alert onClose={() => setAlertVisibility(false)}>
-          My <strong>Alert</strong>
-        </Alert>
-      )}
-      <Button text={"Show Alert"} onClick={() => setAlertVisibility(true)} />
+      <div>Name: {customer.name}</div>
+      <div>
+        Address:
+        <div>{customer.address.city}</div>
+        <div>{customer.address.zipCode}</div>
+      </div>
+      <Button text={"Update Zip Code"} onClick={handleSetCustomer} />
     </div>
   );
 }
