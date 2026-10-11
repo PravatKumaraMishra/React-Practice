@@ -1,34 +1,54 @@
-# React + TypeScript + Vite
+# React Practice — Mood Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A React, TypeScript, and Bootstrap practice project covering components, props, events, conditional rendering, and array state updates.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Add mood tags manually or from suggestions.
+- Reject duplicate moods without case sensitivity.
+- Remove individual tags or clear the list.
+- Find and replace mood labels.
+- Switch between list and grid views.
 
-## React Compiler
+## Requirements
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- Node.js `^20.19.0 || >=22.12.0` and npm.
+- No backend or API credentials are required.
 
-Note: This will impact Vite dev & build performances.
+## Run locally
 
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```sh
+git clone https://github.com/PravatKumaraMishra/React-Practice.git
+cd React-Practice
+npm ci
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Enter a mood and add it, try the quick suggestions, then remove or replace a label. The current screen is the mood tracker; earlier exercises are preserved in Git history.
+
+```sh
+npm run dev
+```
+
+Open the local URL printed by Vite (normally `http://localhost:5173`).
+
+## Available commands
+
+| Command | Script |
+| --- | --- |
+| `npm run dev` | `vite` |
+| `npm run build` | `tsc -b && vite build` |
+| `npm run lint` | `oxlint` |
+| `npm run preview` | `vite preview` |
+
+`npm run preview` serves the output of `npm run build`; it does not build the project itself.
+
+## Project structure
+
+- `src/App.tsx`: mood tracker and state operations.
+- `src/Button.tsx`: reusable button.
+- `src/Alert.tsx` and `src/ListGroup.tsx`: practice components.
+- `src/main.tsx`: application entry.
+
+## Notes
+
+Mood data is held in React state and is reset on reload. This is an exercise repository. Some handlers and tag IDs have inconsistent TypeScript types, so a production build may report type errors; the README does not imply those issues are fixed.
